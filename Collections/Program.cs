@@ -8,12 +8,6 @@ namespace Collections
         public int Id;
         public int ParentId;
         public string Name;
-
-        public Entity(int Id, int ParentId, string Name) {
-            this.Id = Id;
-            this.ParentId = ParentId;
-            this.Name = Name;
-        }
     }
     class Program
     {
@@ -44,18 +38,14 @@ namespace Collections
         }
         static void Main(string[] args)
         {
-            var people1 = new Entity(1, 0, "Root entity");
-            var people2 = new Entity(2, 1, "Child of 1 entity");
-            var people3 = new Entity(3, 1, "Child of 1 entity");
-            var people4 = new Entity(4, 2, "Child of 2 entity");
-            var people5 = new Entity(5, 4, "Child of 4 entity");
-
-            List<Entity> entities = new List<Entity>();
-            entities.Add(people1);
-            entities.Add(people2);
-            entities.Add(people3);
-            entities.Add(people4);
-            entities.Add(people5);
+            List<Entity> entities = new List<Entity>()
+            {
+                new Entity {Id = 1, ParentId = 0, Name = "Root entity"},
+                new Entity {Id = 2, ParentId = 1, Name = "Child of 1 entity"},
+                new Entity {Id = 3, ParentId = 1, Name = "Child of 1 entity"},
+                new Entity {Id = 4, ParentId = 2, Name = "Child of 2 entity"},
+                new Entity {Id = 5, ParentId = 4, Name = "Child of 4 entity"}
+            };
             Program.ListToDict(entities);
         }
     }
